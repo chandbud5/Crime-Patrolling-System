@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'police_panel',
     'user_panel',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
