@@ -1,10 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.fields import NullBooleanField
 # Create your models here.
 
 class User_DB(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=256, default="")
     last_name = models.CharField(max_length=256, default="")
     email_id = models.EmailField(blank=True, null=True)

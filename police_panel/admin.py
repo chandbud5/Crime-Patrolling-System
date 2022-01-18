@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Police_DB, Complaint
+from .models import Police_DB, Complaint, Reports
 # Register your models here.
 
 class complaint_view(admin.ModelAdmin):
@@ -16,3 +16,4 @@ class police_view(admin.ModelAdmin):
 
 admin.site.register(Police_DB, police_view)
 admin.site.register(Complaint, complaint_view)
+admin.site.register(Reports)
