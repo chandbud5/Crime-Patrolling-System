@@ -1,6 +1,7 @@
 from django.contrib import auth
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import auth
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -10,6 +11,7 @@ from police_panel.models import Complaint
 def index(request):
     return HttpResponse("You are in User panel")
 
+@csrf_exempt
 @api_view(['POST'])
 def registerUser(request):
     response = {}
@@ -46,11 +48,13 @@ def registerUser(request):
         response["message"] = "Passwords do not match"
         return Response(response, status = status.HTTP_406_NOT_ACCEPTABLE)
 
+@csrf_exempt
 @api_view(['POST'])
 def logout(request):
     auth.logout(request)
     return Response({"message": "User Log out"}, status = status.HTTP_200_OK)
 
+@csrf_exempt
 @api_view(["POST"])
 def login(request):
     response = {}
@@ -66,6 +70,7 @@ def login(request):
             response["message"] = "Invalid Credentials Login Failed Please try again"
             return Response(response, status=status.HTTP_401_UNAUTHORIZED)
 
+@csrf_exempt
 @api_view(["POST"])
 def create_complaint(request):
     response = {}
