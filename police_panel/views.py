@@ -1,6 +1,9 @@
+from http.client import CannotSendRequest
+import imp
 from django.http import response
 from django.shortcuts import render, HttpResponse
 from django.contrib import auth
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import auth
 from rest_framework.response import Response
@@ -45,6 +48,7 @@ def index(request):
 #         response["message"] = "Passwords do not match"
 #         return Response(response, status = status.HTTP_406_NOT_ACCEPTABLE)
 
+@csrf_exempt
 @api_view(["GET"])
 def view_complaints(request):
     response = {}
@@ -58,6 +62,7 @@ def view_complaints(request):
         response["message"] = "Please login to continue or you might not have access to this details"
         return Response(response, status = status.HTTP_401_UNAUTHORIZED)
 
+@csrf_exempt
 @api_view(['POST'])
 def report(request, id):
     response = {}
@@ -79,6 +84,7 @@ def report(request, id):
         response["message"] = "You are not authorized for this action"
         return Response(response, status = status.HTTP_401_UNAUTHORIZED)
 
+@csrf_exempt
 @api_view(['POST'])
 def complaint_accepted(request, id):
     response = {}
