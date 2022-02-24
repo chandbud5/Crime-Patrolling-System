@@ -34,13 +34,13 @@ def registerUser(request):
         user = User.objects.create_user(username=contact_number, email = email_id, password=password)
         user.first_name = first_name
         user.last_name = last_name
-        user.save()
         user_db_obj = User_DB.objects.create(contact_number = contact_number, aadhar_number = aadhar_number, user = user)
         user_db_obj.first_name = first_name
         user_db_obj.last_name = last_name
         user_db_obj.email_id = email_id
         user_db_obj.address = address
         user_db_obj.save()
+        user.save()
 
         response["message"] = "User Registered to the system"
         return Response(response, status = status.HTTP_201_CREATED)

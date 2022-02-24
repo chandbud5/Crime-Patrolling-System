@@ -77,13 +77,26 @@ WSGI_APPLICATION = 'crime_patrol.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'name': 'root',
+        'CLIENT': {
+                   'name': 'root',
+                   'host': 'mongodb+srv://root:root@crimepatrol.7mhzb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+                   'username': 'root',
+                   'password': 'root',
+                   'authMechanism': "SCRAM-SHA-1",
+                },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

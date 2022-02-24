@@ -84,7 +84,7 @@ def report(request, id):
         response["message"] = "You are not authorized for this action"
         return Response(response, status = status.HTTP_401_UNAUTHORIZED)
 
-@csrf_exempt
+# @csrf_exempt
 @api_view(['POST'])
 def complaint_accepted(request, id):
     response = {}
